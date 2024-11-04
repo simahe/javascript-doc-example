@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>var、let、const 学习</title>
+  </head>
+  <body>
+    <script>
+      console.log('在全局作用域中定义变量');
+      a1 = 'a1';
+      var a2 = 'a2';
+      let a3 = 'a3';
+      const a4 = 'a4';
+      var a5 = function () {};
+      function a6() {}
+
+      console.log(window.a1 + '-' + a1); //a1-a1
+      console.log(window.a2 + '-' + a2); //a2-a2
+      console.log(window.a3 + '-' + a3); //undefined-a3
+      console.log(window.a4 + '-' + a4); //undefined-a4
+      console.log(window.a5 + '-' + a5); //function () {}-function () {}
+      console.log(window.a6 + '-' + a6); //function a6() {}-function a6() {}
+
+      console.log('在外部访问函数作用域中定义变量');
+      function actionScope() {
+        b1 = 'b1';
+        var b2 = 'b2';
+        let b3 = 'b3';
+        const b4 = 'b4';
+        var b5 = function () {};
+      }
+      console.log('actionScope函数执行一下');
+      actionScope();
+      console.log(window.b1); //b1
+      console.log(window.b2); //undefined
+      console.log(window.b3); //undefined
+      console.log(window.b4); //undefined
+      console.log(window.b5); //undefined
+      console.log(b1); //b1
+      //console.log(b2); //Uncaught ReferenceError: b2 is not defined
+      //console.log(b3); //Uncaught ReferenceError: b3 is not defined
+      //console.log(b4); //Uncaught ReferenceError: b4 is not defined
+      //console.log(b5); //Uncaught ReferenceError: b5 is not defined
+
+      try {
+        console.log('变量初始化');
+        c1 = 'c1';
+        var c2 = 'c2';
+        let c3 = 'c3';
+        const c4 = 'c4';
+        var c5 = function () {
+          tmp = 'abc'; // ReferenceError
+          let tmp;
+        };
+        //const c6;//// SyntaxError: Identifier 'i' has already been declared
+        const c7 = [1, 2, 3];
+        const c8 = [1, 2, 3];
+        const c9 = {
+          name: 'simahe',
+          age: 18,
+        };
+
+        c1 = 'c1-1';
+        c2 = 'c2-2';
+        c3 = 'c3-3';
+        //c4 = 'c4-4'; //typeError: Assignment to constant variable.
+        c5 = function () {};
+        c7.push(4);
+        //c8 = [1, 2, 3, 4];//TypeError: Assignment to constant variable.
+        c9.age = 16;
+
+        console.log(c1); //c1-1
+        console.log(c2); //c2-2
+        console.log(c3); //c3-3
+        console.log(c4); //c4
+        console.log(c5); //ƒ () {return 1;}
+        console.log(c7); // [1, 2, 3, 4]
+        console.log(c8); // [1, 2, 3]
+        console.log(c9); // {age: 16,name: "simahe"}
+
+        //暂时性死区
+        if (true) {
+          tmp = 'abc'; // ----ReferenceError: Cannot access 'tmp' before initialization
+          let tmp;
+        }
+      } catch (e) {
+        console.log('----' + e);
+      }
+
+      try {
+        console.log('变量提升');
+
+        console.log(d1); // 输出: undefined
+        var d1 = 'd1';
+        console.log(d1); // 输出: d1
+
+        console.log(d2); // 报错: ReferenceError: Cannot access 'd2' before initialization
+        let d2 = 10;
+
+        console.log(d3); // 报错: ReferenceError: Cannot access 'd3' before initialization
+        const d3 = 20;
+      } catch (e) {
+        console.log(e);
+      }
+    </script>
+  </body>
+</html>

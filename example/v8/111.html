@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let stack = ['GEC']; // 定义一个数组用来模拟栈
+      // 用数组的Push方法模式入栈
+      stack.push('FEC_1');
+      stack.push('FEC_2');
+      stack.push('FEC_3');
+      console.log(stack); // ['GEC', 'FEC_1', 'FEC_2', 'FEC_3']
+      // 用数组的pop方法模拟出栈
+      const FEC_3 = stack.pop(); //FEC_3
+      const FEC_2 = stack.pop(); //FEC_2
+      const FEC_1 = stack.pop(); //FEC_1
+      const GEC = stack.pop(); //GEC
+      console.log(FEC_3);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>var、let、const 区别</title>
+  </head>
+  <body>
+    <script>
+      //https://es6.ruanyifeng.com/#docs/let
+
+      /**
+       * let所声明的变量，只在let所在的代码块内有效。
+       * let命令声明变量之前，该变量都是不可用的,称为“暂时性死区”
+       * let不允许在相同作用域内，重复声明同一个变量。
+       */
+      try {
+        function test1() {
+          var a1 = 1;
+          b1 = 1;
+        }
+        // console.log('a1:' + a1);
+        // console.log('b1:' + b1);
+        test1();
+        console.log('b1-1:' + b1);
+        console.log('a1:' + a1);
+      } catch (e) {
+        console.log(e); // ReferenceError: a1 is not defined.
+      }
+
+      /**
+       * 变量提升
+       * let所声明的变量，只在let所在的代码块内有效。
+       */
+
+      try {
+        // var 的情况
+        console.log(a2); // 报undefined
+        var a2 = 2; //变量提升
+        //变量提升其实等价于
+        // var a2=undefined;
+        // console.log(a2);
+        // a2 = 2;
+
+        // let 的情况
+        console.log(b2); // 报引用错误ReferenceError
+        let b2 = 2;
+      } catch (e) {
+        console.log(e); // Cannot access 'b2' before initialization
+      }
+
+      try {
+        if (true) {
+          a3 = 3;
+          console.log(a3); //ReferenceError
+
+          //注释掉上面2个报错的代码在调试下面的
+          let a3; // TDZ结束
+          console.log(a3); // undefined
+
+          a3 = 123;
+          console.log(a3); // 123
+        }
+      } catch (e) {
+        console.log(e); // ReferenceError: Cannot access 'a3' before initialization
+      }
+
+      try {
+        var a4 = 'a4';
+
+        function b4() {
+          console.log(a4); //undefined
+          if (false) {
+            var a4 = 'hello world';
+            console.log(a4); //undefined
+          }
+        }
+        function b42() {
+          console.log(a4); //undefined
+        }
+
+        b4(); // undefined
+        b42(); // a4
+      } catch (error) {}
+
+      try {
+        console.log(a5); //undefined
+        console.log(b5()); //5
+        console.log(c5); //undefined
+        var a5 = 1;
+        function b5() {
+          return 5;
+        }
+        var c5 = function () {
+          return 55;
+        };
+      } catch (error) {}
+    </script>
+  </body>
+</html>

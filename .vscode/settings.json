@@ -1,0 +1,47 @@
+{
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.zoomLevel": 1,
+  "fileheader.Author": "zhang qianlong",
+  "fileheader.LastModifiedBy": "zhang qianlong",
+
+  "vetur.validation.template": true,
+  "vetur.format.enable": true,
+  "vetur.format.defaultFormatter.js": "none",
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "prettier.semi": true, // 句尾添加分号
+  "prettier.singleQuote": true, // 使用单引号代替双引号
+  "prettier.useTabs": false,
+  // "prettier.tabWidth": 4, // 缩进字节数
+  "prettier.trailingComma": "es5",
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "workbench.settings.editor": "json",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  //保存时eslint自动修复错误
+  // "eslint.autoFixOnSave": true,
+  //保存自动格式化
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "git.enableSmartCommit": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true, // #每次保存的时候自动格式化
+  // 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // "eslint.enable": true, //是否开启vscode的eslint
+  // 配置 ESLint 检查的文件类型
+  "eslint.validate": ["javascript", "vue", "html"],
+  "workbench.editorAssociations": {
+    "*.ts": "default"
+  },
+  "files.autoGuessEncoding": true
+}
