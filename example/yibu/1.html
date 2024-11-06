@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(1);
+      new Promise((resolve, reject) => {
+        console.log(2);
+        resolve();
+      }).then(() => {
+        console.log(3);
+        setTimeout(() => {
+          console.log(4);
+        }, 0);
+      });
+      setTimeout(() => {
+        console.log(5);
+        setTimeout(() => {
+          console.log(6);
+        }, 0);
+      }, 0);
+      console.log(7);
+
+      //1,2,7,3,5,4,6
+
+      //       meout，将其回调函数作为宏任务加入到宏任务队列中。
+      // 打印7。
+      // 同步代码执行完毕，开始执行微任务队列中的任务。打印3。
+      // 在.then()回调函数中遇到第二个setTimeout，将其回调函数作为宏任务加入到宏任务队列中。
+      // 微任务执行完毕，开始执行宏任务队列中的任务。打印5。
+      // 在第一个setTimeout的回调函数中遇到第三个setTimeout，将其回调函数作为宏任务加入到宏任务队列中。
+      // 执行第二个setTimeout的回调函数（即.then()中的setTimeout），打印4。
+      // 执行第三个setTimeout的回调函数（即第一个setTimeout中的setTimeout），打印6。
+    </script>
+  </body>
+</html>

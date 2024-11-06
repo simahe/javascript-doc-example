@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function fetchData(callback) {
+      //   setTimeout(() => {
+      //     const data = 'Callback Functions';
+      //     callback(data);
+      //   }, 2000);
+      // }
+      // fetchData((result) => {
+      //   console.log(result); // Callback Functions
+      // });
+
+      // function fetchData() {
+      //   return new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       const data = 'Promise';
+      //       resolve(data);
+      //     }, 2000);
+      //   });
+      // }
+
+      // fetchData()
+      //   .then((result) => {
+      //     console.log(result); // Promise
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
+
+      function fetchData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const data = 'async-await';
+            resolve(data);
+          }, 2000);
+        });
+      }
+
+      async function getData() {
+        try {
+          const result = await fetchData();
+          console.log(result); //async-await
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      getData();
+    </script>
+  </body>
+</html>
